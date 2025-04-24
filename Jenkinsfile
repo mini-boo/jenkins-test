@@ -1,11 +1,15 @@
 pipeline {
     agent any
-
+    tools {
+        maven "M3"
+    }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Maven Hello World'
+                git 'https://github.com/mini-boo/jenkins-test'
+                sh "mvn clean package"
             }
+
         }
     }
 }
